@@ -1,0 +1,44 @@
+#TYPE System.IO.FileInfo
+"PSPath","PSParentPath","PSChildName","PSDrive","PSProvider","PSIsContainer","Mode","VersionInfo","BaseName","Target","LinkType","Name","Length","DirectoryName","Directory","IsReadOnly","Exists","FullName","Extension","CreationTime","CreationTimeUtc","LastAccessTime","LastAccessTimeUtc","LastWriteTime","LastWriteTimeUtc","Attributes"
+"Microsoft.PowerShell.Core\FileSystem::C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week2\Question10.ps1","Microsoft.PowerShell.Core\FileSystem::C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week2","Question10.ps1","C","Microsoft.PowerShell.Core\FileSystem","False","-a----","File:             C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week2\Question10.ps1
+InternalName:     
+OriginalFilename: 
+FileVersion:      
+FileDescription:  
+Product:          
+ProductVersion:   
+Debug:            False
+Patched:          False
+PreRelease:       False
+PrivateBuild:     False
+SpecialBuild:     False
+Language:         
+","Question10","System.Collections.Generic.List`1[System.String]",,"Question10.ps1","307","C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week2","C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week2","False","True","C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week2\Question10.ps1",".ps1","9/4/2025 5:36:27 PM","9/4/2025 9:36:27 PM","9/4/2025 5:37:00 PM","9/4/2025 9:37:00 PM","9/4/2025 5:37:00 PM","9/4/2025 9:37:00 PM","Archive"
+"Microsoft.PowerShell.Core\FileSystem::C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week2\Question8_Basic.ps1","Microsoft.PowerShell.Core\FileSystem::C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week2","Question8_Basic.ps1","C","Microsoft.PowerShell.Core\FileSystem","False","-a----","File:             C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week2\Question8_Basic.ps1
+InternalName:     
+OriginalFilename: 
+FileVersion:      
+FileDescription:  
+Product:          
+ProductVersion:   
+Debug:            False
+Patched:          False
+PreRelease:       False
+PrivateBuild:     False
+SpecialBuild:     False
+Language:         
+","Question8_Basic","System.Collections.Generic.List`1[System.String]",,"Question8_Basic.ps1","257","C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week2","C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week2","False","True","C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week2\Question8_Basic.ps1",".ps1","9/4/2025 3:36:03 PM","9/4/2025 7:36:03 PM","9/4/2025 4:55:41 PM","9/4/2025 8:55:41 PM","9/4/2025 4:55:41 PM","9/4/2025 8:55:41 PM","Archive"
+"Microsoft.PowerShell.Core\FileSystem::C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week2\Question9.ps1","Microsoft.PowerShell.Core\FileSystem::C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week2","Question9.ps1","C","Microsoft.PowerShell.Core\FileSystem","False","-a----","File:             C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week2\Question9.ps1
+InternalName:     
+OriginalFilename: 
+FileVersion:      
+FileDescription:  
+Product:          
+ProductVersion:   
+Debug:            False
+Patched:          False
+PreRelease:       False
+PrivateBuild:     False
+SpecialBuild:     False
+Language:         
+","Question9","System.Collections.Generic.List`1[System.String]",,"Question9.ps1","210","C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week2","C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week2","False","True","C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week2\Question9.ps1",".ps1","9/4/2025 5:14:50 PM","9/4/2025 9:14:50 PM","9/4/2025 5:42:00 PM","9/4/2025 9:42:00 PM","9/4/2025 5:42:00 PM","9/4/2025 9:42:00 PM","Archive"
