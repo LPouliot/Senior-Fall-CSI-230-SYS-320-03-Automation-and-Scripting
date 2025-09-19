@@ -33,9 +33,6 @@ $loginoutsTable += [pscustomobject]@{"Time" = $loginouts[$i].TimeGenerated; `
                                      }
 } #End of for loop
 
-Write-Host "Giving the login and logoff events for the specified days"
-
-return $loginoutsTable
 
 ##################################################
 # Computer start and stop 
@@ -68,9 +65,13 @@ $StartStopTable += [pscustomobject]@{"Time" = $startstop[$i].TimeGenerated; `
                                      }
 } #End of for loop
 
+Write-Host "Giving the login and logoff events for the specified days"
 Write-Host "Giving the computer start and shutdown times for the specified days."
 
-return $StartStopTable
+
+$loginoutsTable
+$StartStopTable
+
 }
 
 #calling the function
