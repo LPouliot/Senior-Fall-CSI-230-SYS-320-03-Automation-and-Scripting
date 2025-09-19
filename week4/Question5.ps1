@@ -2,29 +2,29 @@
 
 function WindowsComputerStartShutdown {
 
-$chosendays = Read-Host "Fill in the number of days you would like to check for cpmputer start and shutdown times:" 
+$chosendays = Read-Host "Fill in the number of days you would like to check for computer start and shutdown times" 
 
-# Get login and logoff records from Widndows Events and save to a variable
-$startstop = Get-EventLog system -Source Microsoft-Windows-winlogon -After (Get-Date).AddDays(-$chosendays)
+# Get computer start and stop records from Windows Events, then saving them to a variable
+# Have to use Where-Object to track system events 
+$startstop = Get-EventLog system -After (Get-Date).AddDays(-$chosendays) | `
+Where-Object {$_.EventID -eq 6005 -or $_.EventID -eq 6006}
 
-$loginoutsTable = @() #Empty Array to fill customly
+$StartStopTable = @() #Empty Array to fill customly
+
 for($i=0; $i -lt $startstop.Count; $i++){
 
 # creating event property value 
 $event = ""
-if($startstop[$i].EventId -eq "6005") {$event="Start"}
-if($startstop[$i].EvemtId -eq "6006") {$event="Shutdown"}
+if($startstop[$i].EventID -eq "6005") {$event="Start"}
+if($startstop[$i].EventID -eq "6006") {$event="Shutdown"}
 
-# Creating user Property valuTe 
-# $user = $loginouts[$i].ReplacementStrings[1]
-$user = New-Object System.Security.Principal.SecurityIdentifier($startstop[$i].ReplacementStrings[1])
-$account = $user.Translate([System.Security.Principal.NTAccount])
-$username = $account.system
+# Creating a new user property value using System
+$username = "System"
 
 
 # Adding each new line (in form of a custom object) to our empty array
-$loginoutsTable += [pscustomobject]@{"Time" = $startstop[$i].TimeGenerated; `
-                                       "Id" = $startstop[$i].InstanceId; `
+$StartStopTable += [pscustomobject]@{"Time" = $startstop[$i].TimeGenerated; `
+                                       "Id" = $startstop[$i].EventID; `
                                     "Event" = $event; `
                                      "User" = $username; 
                                      }
@@ -32,7 +32,7 @@ $loginoutsTable += [pscustomobject]@{"Time" = $startstop[$i].TimeGenerated; `
 
 Write-Host "Giving the computer start and shutdown times for the specified days."
 
-return $loginoutsTable
+return $StartStopTable
 
 }
 
