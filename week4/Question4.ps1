@@ -1,6 +1,6 @@
 ﻿#creating the function to let the user choose the amount of days to look for
 
-funtion WindowsLoginLogoffInfo { param([Parameter(Mandatory=$true)][int]$chosendays)
+function WindowsLoginLogoffInfo {
 
 $chosendays = Read-Host "Fill in the number of days you would like to check for login and logoff events" 
 
@@ -32,6 +32,10 @@ $loginoutsTable += [pscustomobject]@{"Time" = $loginouts[$i].TimeGenerated; `
 
 Write-Host "Giving the login and logoff events for the specified days"
 
-$loginoutsTable
+return $loginoutsTable
 
 }
+
+#calling the function
+
+WindowsLoginLogoffInfo
