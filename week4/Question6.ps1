@@ -3,10 +3,10 @@
 clear
 
 # Get Login and Logoffs from the last 15 days.
-$loginoutsTable = $chosendays = 15
+$loginoutsTable = WindowsandComputers
 $loginoutsTable
 
 # Get Shutdowns and Start ups from the last 25 days.
-$StartStopTable = $chosendays = 25
+$StartStopTable = WindowsandComputers
 $StartStopTable
 

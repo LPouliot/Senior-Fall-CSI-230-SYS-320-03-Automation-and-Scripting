@@ -1,5 +1,11 @@
 ﻿# Login and Logoff information function
 
+#creating biggo Function
+
+function WindowsandComputers {
+
+$chosendays = Read-Host "Fill in the number of days you would like to check for login and logoff events"
+
 # Get login and logoff records from Widndows Events and save to a variable
 $loginouts = Get-EventLog system -Source Microsoft-Windows-winlogon -After (Get-Date).AddDays(-$chosendays)
 
@@ -31,10 +37,10 @@ Write-Host "Giving the login and logoff events for the specified days"
 
 return $loginoutsTable
 
+##################################################
 # Computer start and stop 
 
-
-##################################################
+$chosendays = Read-Host "Fill in the number of days you would like to check for computer start and shutdown times"
 
 # Get computer start and stop records from Windows Events, then saving them to a variable
 # Have to use Where-Object to track system events 
@@ -65,3 +71,8 @@ $StartStopTable += [pscustomobject]@{"Time" = $startstop[$i].TimeGenerated; `
 Write-Host "Giving the computer start and shutdown times for the specified days."
 
 return $StartStopTable
+}
+
+#calling the function
+
+WindowsandComputers
