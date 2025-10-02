@@ -1,11 +1,13 @@
-﻿function ApacheLogs1(){
-$logsNotFormatted = Get-Content C:\xampp\apache\logs\access.log
-$tableRecords = @()
+﻿function ApacheLogs1($httpc, $browser, $page){
+$logsNotFormatted = Get-Content C:\xampp\apache\logs\access.log | Select-String " $httpc " | Select-String " $browser/" | Select-String "/$page "
+#$logsNotFormatted
+#$tableRecords = @()
 
-for ($i=0; $i -lt $logsNotFormatted.Length; $i++) {
+<#for ($i=0; $i -lt $logsNotFormatted.Count; $i++) {
 
 # Split a string into words
 $words = $logsNotFormatted[$i].Split(" ");
+$words
 
  $tableRecords += [pscustomobject]@{ 
                                      "IP" = $words[0]; `
@@ -15,13 +17,11 @@ $words = $logsNotFormatted[$i].Split(" ");
                                      "Protocol" = $words[7].Trim('"'); `
                                      "Response" = $words[8]; `
                                      "Referrer" = $words[10]; `
-                                     "Client" = $words[11..($words.Count - 1)] -join ' '
-                                    }
-                                   }
-
-return $tableRecods | Where-Object {$_.IP -ilike "10.*"}
-
+                                     "Client" = $words[11..($words.Count - 2)]; }
+                                    
+} # end of for loop#>
+return $logsNotFormatted | Where-Object {$_.IP -ilike "10.*"}
 }
 
-$tableRecords= ApacheLogs1
+$tableRecords = ApacheLogs1 '200' 'Chrome' 'Courses.html'
 $tableRecords | Format-Table -AutoSize -Wrap

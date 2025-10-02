@@ -2,6 +2,7 @@
 
 #dot notation
 . (Join-Path $PSScriptRoot Apache_Logs.ps1)
+. (Join-Path $PSScriptRoot ProfParsingApache.ps1)
 
 clear
 
@@ -11,4 +12,5 @@ $code = Read-Host "Enter the HTTP response number (ex: 200)"
 $browsername = Read-Host "Enter the name of the browser (ex: Chrome)"
 
 # Function call
-vistedpages -$page -$code $browsername
+#vistedpages -$page -$code $browsername
+ApacheLogs1 
