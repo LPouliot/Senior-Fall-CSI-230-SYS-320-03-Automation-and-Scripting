@@ -50,22 +50,6 @@ while($operation){
         $name = Read-Host -Prompt "Please enter the username for the new user"
         $password = Read-Host -AsSecureString -Prompt "Please enter the password for the new user"
 
-        # Create a function called checkUser in Users that: 
-        #              - Checks if user a exists. 
-        #              - If user exists, returns true, else returns false
-        
-        function checkUser($name){
-
-            if($enabledUsers -contains $name){
-                return $true 
-                
-             }
-             else{
-                return $false
-
-             } #close if/else statement
-
-        } # Close the function
 
         # Check the given username with your new function.
         #              - If false is returned, continue with the rest of the function
@@ -78,10 +62,10 @@ while($operation){
         }
         else{
             Write-Host "This user doesn't exist, proceeding.." | Out-String
+            exit
+      
         }
-    }
-
-
+    
         # Check the given password with your new function. 
         #              - If false is returned, do not continue and inform the user
         #              - If true is returned, continue with the rest of the function
@@ -90,15 +74,14 @@ while($operation){
 
         if($whenPasswordGood){
             Write-Host "Password meets requirements" | Out-String
+            createAUser $name $password
+            Write-Host "User: $name is created." | Out-String
         }
         else{
-            Write-Host "Password does not meet requirements" | Out-String
+            Write-Host "Password does not meet requirements. Try again." | Out-String
+            exit
         }
        
-
-        createAUser $name $password
-
-        Write-Host "User: $name is created." | Out-String
     }
 
 
@@ -117,6 +100,7 @@ while($operation){
         }
         else{
             Write-Host "This user doesn't exist." | Out-String
+            exit
         }
    
     }
@@ -138,6 +122,7 @@ while($operation){
         }
         else{
             Write-Host "This user doesn't exist." | Out-String
+            exit
         }
    
     }
@@ -151,13 +136,14 @@ while($operation){
         #Check the given username with the checkUser function.
         $checkingDisableUser = checkUser $name
 
-        if($checkingEnableUser){
+        if($checkingDisableUser){
             Write-Host "Disabling user..." | Out-String
             disableAUser $name
             Write-Host "User: $name Disabled." | Out-String
         }
         else{
             Write-Host "This user doesn't exist." | Out-String
+            exit
         }
    
     }
@@ -178,6 +164,7 @@ while($operation){
         }
         else{
             Write-Host "This user doesn't exist." | Out-String
+            exit
         }
     }
 
@@ -194,7 +181,9 @@ while($operation){
             Write-Host ($userLogins | Where-Object { $_.User -ilike "*$name"} | Format-Table | Out-String)
         }
         else{
-            
+            Write-Host "This user doesn't exist." | Out-String
+            exit
+        }
     }
 
 

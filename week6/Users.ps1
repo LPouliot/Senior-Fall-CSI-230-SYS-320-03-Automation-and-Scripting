@@ -73,3 +73,23 @@ function enableAUser($name){
    Enable-LocalUser $userToBeEnabled
    
 }
+
+# Create a function called checkUser in Users that: 
+#              - Checks if user a exists. 
+#              - If user exists, returns true, else returns false
+
+function checkUser($name){
+
+    $enabledUsers = getEnabledUsers
+    $disabledUsers = getNotEnabledUsers
+
+    if($enabledUsers -and $disabledUsers -contains $name){
+        return $true 
+                
+    }
+    else{
+        return $false
+
+    } #close if/else statement
+
+} # Close the function
