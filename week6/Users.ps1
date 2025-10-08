@@ -117,12 +117,10 @@ function checkUser($name){
         if($user.Name -ieq $name){
             return $true         
         }
-        else{
-            return $false
-    } #close if/else statement
+    } 
+    return $false 
   }
 
-} # Close the function
 
 
 
