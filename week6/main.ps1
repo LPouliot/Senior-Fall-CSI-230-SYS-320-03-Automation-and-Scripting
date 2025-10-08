@@ -58,28 +58,35 @@ while($operation){
         $whenUserExists = checkUser $name
 
         if($whenUserExists){
-            Write-Host "Cannot create user, it already exists" | Out-String
+            Write-Host "This user already exists." | Out-String
         }
         else{
-            Write-Host "This user doesn't exist, proceeding.." | Out-String
-            exit
-      
-        }
+            Write-Host "New user! proceeding.." | Out-String
+            
+            # Using convert secure string into plain text
+
+            $bstr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($password)
+            $plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
     
         # Check the given password with your new function. 
         #              - If false is returned, do not continue and inform the user
         #              - If true is returned, continue with the rest of the function
 
-        $whenPasswordGood = checkPassword $password
+        $whenPasswordGood = checkPassword $plainPassword
 
         if($whenPasswordGood){
             Write-Host "Password meets requirements" | Out-String
-            createAUser $name $password
+
+            #Write back to plain
+            $securePassword = ConvertTo-SecureString $plainPassword -AsPlainText -Force
+
+            createAUser $name $securePassword
             Write-Host "User: $name is created." | Out-String
         }
         else{
             Write-Host "Password does not meet requirements. Try again." | Out-String
-            exit
+            }
+           
         }
        
     }
@@ -100,7 +107,7 @@ while($operation){
         }
         else{
             Write-Host "This user doesn't exist." | Out-String
-            exit
+            
         }
    
     }
@@ -122,7 +129,7 @@ while($operation){
         }
         else{
             Write-Host "This user doesn't exist." | Out-String
-            exit
+            
         }
    
     }
@@ -143,7 +150,7 @@ while($operation){
         }
         else{
             Write-Host "This user doesn't exist." | Out-String
-            exit
+            
         }
    
     }
@@ -164,7 +171,7 @@ while($operation){
         }
         else{
             Write-Host "This user doesn't exist." | Out-String
-            exit
+            
         }
     }
 
@@ -175,6 +182,8 @@ while($operation){
 
         #Check the given username with the checkUser function.
         #Change the above line in a way that, the days 90 should be taken from the user
+        $checkingUserFailedLog = checkUser $name
+
         if($checkingUserFailedLog){
             Write-Host "User located, checking logs.." | Out-String
             $userLogins = getFailedLogins 90
@@ -182,7 +191,7 @@ while($operation){
         }
         else{
             Write-Host "This user doesn't exist." | Out-String
-            exit
+            
         }
     }
 

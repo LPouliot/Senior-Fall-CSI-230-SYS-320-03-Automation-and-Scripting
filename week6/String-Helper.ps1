@@ -37,7 +37,7 @@ return $allines
 
 function checkPassword($password){
 
-    $hasLength = $password.Length -gt '6'
+    $hasLength = $password.Length -ge 6
 
     $hasLetters = $password -match '[a-zA-Z]'
 
