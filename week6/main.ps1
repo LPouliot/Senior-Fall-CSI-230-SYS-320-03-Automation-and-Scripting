@@ -14,7 +14,8 @@ $Prompt += "5 - Enable a User`n"
 $Prompt += "6 - Disable a User`n"
 $Prompt += "7 - Get Log-In Logs`n"
 $Prompt += "8 - Get Failed Log-In Logs`n"
-$Prompt += "9 - Exit`n"
+$Prompt += "9 - List At Risk Users`n"
+$Prompt += "10 - Exit`n"
 
 
 
@@ -26,12 +27,6 @@ while($operation){
     Write-Host $Prompt | Out-String
     $choice = Read-Host 
 
-
-    if($choice -eq 9){
-        Write-Host "Goodbye" | Out-String
-        exit
-        $operation = $false 
-    }
 
     elseif($choice -eq 1){
         $enabledUsers = getEnabledUsers
@@ -196,13 +191,50 @@ while($operation){
     }
 
 
-    # TODO: Create another choice "List at Risk Users" that
+    # Create another choice "List at Risk Users" that
     #              - Lists all the users with more than 10 failed logins in the last <User Given> days.  
     #                (You might need to create some failed logins to test)
     #              - Do not forget to update prompt and option numbers
     
-    # TODO: If user enters anything other than listed choices, e.g. a number that is not in the menu   
-    #       or a character that should not be accepted. Give a proper message to the user and prompt again.
-    
+    elseif($choice -eq 9){
 
+        $days = Read-Host -Prompt "Choose a number of days to check for failed logins"
+
+        #converting into an integer
+        $days = [int]$days
+     
+        Write-Host "Checking for at-risk users with more than 10 failed logins for the number of $days days..." | Out-String
+
+        $failedLogins = getFailedLogins $days 
+
+        if($failedLogins -and $failedLogins.Count -gt 0){
+            $userFailedCounts = $failedLogins | Group-Object -Property User |`
+                            Select-Object Name, Count |`
+                            Where-Object {$_.Count -gt 10} |`
+                            Sort-Object Count -Descending
+            if($userFailedCounts){
+            
+                Write-Host "At Risk Users with more than 10 failed login attemps..." | Out-String
+                Write-Host ($userFailedCounts | Format-Table | Out-String)
+            }
+            else{
+                Write-Host "Not At Risk Users were located, or had 10 or fewer failed logins."
+            }
+        }
+        else{
+        Write-Host "No failed login attempswere found in the last 90 days"
+       }
+    }
+
+
+    elseif($choice -eq 10){
+        Write-Host "Goodbye" | Out-String
+        exit
+       }
+
+    # If user enters anything other than listed choices, e.g. a number that is not in the menu   
+    #       or a character that should not be accepted. Give a proper message to the user and prompt again.
+    else{
+        Write-Host "INVALID CHOICE. Enter a number between 1 and 10."
+    }
 }
