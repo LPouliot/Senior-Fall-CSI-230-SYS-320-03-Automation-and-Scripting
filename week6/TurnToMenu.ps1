@@ -25,6 +25,8 @@ Write-Host $Message | Out-String
     # Display last 10 apache logs 
     # (Utilize function ApacheLogs1 from assignment Parsing Apache Logs)
     if($choice -eq 1){
+
+        Write-Host "Displaying Last 10 Apache Logs.." | Out-String
         ApacheLogs1 | Select-Object -Last 10 |Format-Table -AutoSize -Wrap 
     }
 
@@ -33,6 +35,7 @@ Write-Host $Message | Out-String
     # Display last 10 failed logins for all users 
     # (Utilize function getFailedLogins from lab Local User Management Menu)
     if($choice -eq 2){
+        Write-Host "Displaying last 10 Failed Logins for All Users.." | Out-String
         getFailedLogins 10 | Select-Object -Last 10 |Format-Table -AutoSize -Wrap 
     }
 
@@ -42,6 +45,7 @@ Write-Host $Message | Out-String
     # (Utilize your function from lab Local User Management Menu)
     if($choice -eq 3){
    
+    Write-Host "Displaying all at Risk Users.." | Out-String
     $failedLogins = getFailedLogins 90
 
         if($failedLogins){
@@ -57,6 +61,7 @@ Write-Host $Message | Out-String
     # Start Chrome web browser and navigate it to champlain.edu
     # if no instances of Chrome is running (from lab Process Management - 1)
     if($choice -eq 4){
+    Write-Host "Starting or Stopping Chrome.." | Out-String
     StartStopChrome 
     }
 
