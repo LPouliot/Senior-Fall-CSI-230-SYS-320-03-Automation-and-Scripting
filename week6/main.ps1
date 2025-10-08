@@ -28,7 +28,7 @@ while($operation){
     $choice = Read-Host 
 
 
-    elseif($choice -eq 1){
+    if($choice -eq 1){
         $enabledUsers = getEnabledUsers
         Write-Host ($enabledUsers | Format-Table | Out-String)
     }
