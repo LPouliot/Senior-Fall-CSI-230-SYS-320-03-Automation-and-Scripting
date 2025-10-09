@@ -1,5 +1,4 @@
 ﻿
-
 $Message = "`n"
 $Message += "Please choose your operation:`n"
 $Message += "1 - Show Configuration`n"
@@ -11,6 +10,7 @@ $Message += "3 - Exit`n"
 $Operations = $true
 
 while($Operations){
+
 
 Write-Host $Message | Out-String
     $choice = Read-Host 

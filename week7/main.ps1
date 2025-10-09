@@ -1,18 +1,17 @@
-﻿. (Join-Path $PSScriptRoot Email.ps1)
-. (Join-Path $PSScriptRoot Scheduler.ps1)
-. (Join-Path $PSScriptRoot Configuration.ps1)
-. (Join-Path $PSScriptRoot Event-Logs.ps1)
+﻿. "C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week7\Email.ps1"
+. "C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week7\Scheduler.ps1"
+. "C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week6\Event-Logs.ps1"
 
 # Obtaining config
-$configuration = 
+$configuration = Get-Content "C:\Users\champuser\Senior-Fall-CSI-230-SYS-320-03-Automation-and-Scripting\week7\Configuration.txt"
 
 # Obtaining at risk users
-$Failed = atRiskUsers $failedloginsTable.get
+$Failed = getFailedLogins 10
 
 # Sending at risk users as email
 SendAlertEmail ($Failed | Format-Table | Out-String)
 
 # Setting the script to be run daily
-ChooseTimeToRun($scheduledTasks.daily)
+ChooseTimeToRun($configuration[1])
 
 
