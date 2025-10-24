@@ -4,13 +4,13 @@
 # user /24 only
 
 # Useage: bash IPList.bash 10.0.17
-["$#" -l 1] && echo "Usage: $0 <Prefix>" &&  exit 1
+[ "$#" -lt 1 ] && echo "Usage: $0 <Prefix>" &&  exit 1
 
 # Prefix is the first input taken
  prefix="$1"
 
-for i in {seq 1 254}
+for i in $(seq 1 254)
 do
-        echo "$prefix.$1"
+        echo "$prefix.$i"
 done
 
