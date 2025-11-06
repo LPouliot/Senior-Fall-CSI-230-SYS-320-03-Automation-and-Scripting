@@ -18,6 +18,6 @@ echo "$results"
 
 file="/var/log/apache2/access.log.1"
 
-results=$(cat "$file" | grep "GET /page2.html" | cut -d' ' -f1,11 | cut -d "/" -f3- | tr '\t' ' ')   
+results=$(cat "$file" | grep "GET /page2.html" | cut -d' ' -f1,11 | cut -d'/' -f3- | tr -d "/" | tr -d '"' | tr '\t' ' ')
 
 echo "$results"
