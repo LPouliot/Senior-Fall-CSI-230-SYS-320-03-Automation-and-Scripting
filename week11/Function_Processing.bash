@@ -1,7 +1,7 @@
- #!bin/bash
+#!bin/bash
 
-#allLogs=
-#file=/var/log/apache2/access.log.1
+allLogs=""
+file="/var/log/apache2/access.log"
 
 
 function getAllLogs(){
@@ -18,19 +18,17 @@ function pageCount(){
 countedPages=$(echo "$allLogs" | cut -d' ' -f3 | sort | uniq -c)
 }
 
-getAllLogs
-ips
-pageCount
 
 # Creating a function to count every curl access to the server from a different IP address
 
-logs=""
-file="/var/log/apache2/access.log"
-
 function countingCurlAccess(){
-curlAccess=$(echo "$logs" | grep "curl/7.81.0" | cut -d' ' -f1 | sort | uniq -c)
+curlAccess=$(echo "$allLogs" | grep "curl")
 }
 
+
+getAllLogs
+ips
+pageCount
 countingCurlAccess
 echo "$curlAccess" 
 
