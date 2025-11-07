@@ -14,10 +14,10 @@ echo "$results"
 
 #Deliverable 3
 # -f3- removes the characters connected to page1.html, such as the "http:10.0.17.24
-# the last command, the translate one, adds a  space character
+# the  tr /t command should add a space
 
 file="/var/log/apache2/access.log.1"
 
-results=$(cat "$file" | grep "GET /page2.html" | cut -d' ' -f1,11 | cut -d'/' -f3- | tr -d "/" | tr -d '"' | tr '\t' ' ')
+results=$(cat "$file" | grep "GET /page2.html" | cut -d' ' -f1,11 | tr '\t' ' ' | cut -d'/' -f3- | tr -d "/" | tr -d '"')
 
 echo "$results"
