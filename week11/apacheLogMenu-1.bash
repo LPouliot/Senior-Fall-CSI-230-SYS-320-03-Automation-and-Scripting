@@ -15,7 +15,7 @@ function displayOnlyIPs(){
 # function: displayOnlyPages:
 # like displayOnlyIPs - but only pages
 
-functiion displayOnlyPages(){
+function displayOnlyPages(){
 	cat "$logFile" | cut -d " " -f 7 | sort -n | uniq -c 
 	printf "\n"
 }
@@ -78,11 +78,11 @@ function suspiciousVisitors(){
 	declare -A ips
 	while read -r ioc;
 	do
-		matching=$(grep "$ioc" "$logFile"
+		matching=$(grep "$ioc" "$logFile")
 
 		while read -r line;
 		do
-			matching=$(echo "$line" | awk '{print $1}')
+			ip=$(echo "$line" | awk '{print $1}')
 			if [[ -n "$ip" ]];
 			then
 				((ips["$ip"]++))
@@ -132,7 +132,7 @@ do
 		displayOnlyIPs
 
 	# Display only pages visited
-	elif [[ "userInput" == "3" ]]; then
+	elif [[ "$userInput" == "3" ]]; then
 		echo "Displaying only Pages:"
 		displayOnlyPages
 
@@ -141,12 +141,12 @@ do
 		histogram
 
         # Display frequent visitors
-	elif [[ "userInput" == "5" ]]; then
+	elif [[ "$userInput" == "5" ]]; then
                 echo "Displaying Frequent Visitors:"
                 frequentVisitors
 
 	# Display suspicious visitors
-	elif [[ "userInput" == "6" ]]; then
+	elif [[ "$userInput" == "6" ]]; then
                 echo "Displaying Suspicious Visitors:"
                 suspiciousVisitors
 
@@ -156,4 +156,3 @@ do
 
 	fi
 done
-
