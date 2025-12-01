@@ -63,7 +63,7 @@ read subjectName
 
 echo ""
 echo "Courses of $subjectName :"
-cat "$courseFile" | grep "^$subjectName" | awk -F';' '$6 > 0 '  \
+cat "$courseFile" | grep "^$subjectName" | awk -F';' '$6 > 0 '| \
 sed 's/;/ | /g'
 echo ""
 
