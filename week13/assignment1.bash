@@ -43,8 +43,8 @@ read className
 
 echo ""
 echo "Courses of $className :"
-cat "$courseFile" | grep "$className" | \
-sed 
+cat "$courseFile" | grep "$className" | cut -d';' -f1,2,3,4,7 | \
+sed 's/;/ | /g'
 echo ""
 
 } 
@@ -63,8 +63,8 @@ read subjectName
 
 echo ""
 echo "Courses of $subjectName :"
-cat "$courseFile" | grep "$subjectName" | \
-sed 
+cat "$courseFile" | grep "^$subjectName" | awk -F';' '$6 > 0 '  \
+sed 's/;/ | /g'
 echo ""
 
 } 
@@ -97,7 +97,7 @@ do
 	elif [[ "$userInput" == "3" ]]; then
 		displaylocationofInst
 
-	elif [[ "userInput" == "4" ]]; then
+	elif [[ "$userInput" == "4" ]]; then
 		displayavailcourses
 
 	# TODO - 3 Display a message, if an invalid input is given
