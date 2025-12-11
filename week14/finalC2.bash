@@ -3,11 +3,12 @@
 echo "Enter the file being scanned:" 
 read logfile
 
-echo "ENter the scanning file:"
-read IOCfile
+echo "Enter the scanning file:"
+read iocfile
 
 # Searching for all of the indicators within IOC.txt
-for ((i=1; i<=${#iocfile}; i++ ));
+while IFS= read -r ioc;
 do
-	grep -F "$ioc" "$logfile" | awk '{print $1, $2, $3}' >> report.txt
-done
+	[[ -z "$ioc" ]] &&  continue
+	grep -F "$ioc" "$logfile" | awk '{print $1, $2, $3'} > report.txt
+done < "iocfile"
