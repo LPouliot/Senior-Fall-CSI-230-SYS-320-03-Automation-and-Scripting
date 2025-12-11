@@ -24,14 +24,14 @@ do
 	timestamp=$(echo "$line" | awk '{print $2}')
 	page=$(echo "$line" | awk '{print $3}')
 
-#adding  rows for the table
-echo " <tr>" >> report.html
-echo " <td$ip</td>" >> report.html
-echo " <td>$timestamp</td>" >> report.html
-echo " <td>$page</td>" >> report.html
-echo " </tr>" >> report.html
+	#adding  rows for the table
+	echo " <tr>" >> report.html
+	echo " <td>$ip</td>" >> report.html
+	echo " <td>$timestamp</td>" >> report.html
+	echo " <td>$page</td>" >> report.html
+	echo " </tr>" >> report.html
 
-done < report.html
+done < report.txt
 
 # closing up the html
 
